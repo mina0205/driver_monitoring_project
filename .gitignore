@@ -1,0 +1,8 @@
+.venv/
+.venv311/
+__pycache__/
+*.pyc
+
+.DS_Store
+events_log.csv
+.ipynb_checkpoints/

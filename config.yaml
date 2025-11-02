@@ -1,0 +1,26 @@
+# Thresholds & parameters for the driver monitoring prototype
+camera_index: 0           # default webcam index
+frame_width: 1280
+frame_height: 720
+min_fps: 15               # warn if processing slower than this
+ear_sleep_threshold: 0.22 # eye-aspect-ratio threshold (lower = likely closed eyes)
+ear_sleep_frames: 15      # consecutive frames below threshold -> drowsy
+yawn_mouth_ratio_threshold: 0.6 # optional: mouth open ratio for yawning
+yawn_frames: 10
+
+# Head pose thresholds (degrees)
+yaw_abs_threshold: 25     # left/right looking away
+pitch_abs_threshold: 20   # up/down looking away
+pose_frames: 10
+
+# Hand/phone use heuristic
+hand_near_face_frames: 20     # consecutive frames with hand near face -> possible phone use
+hand_face_distance_norm: 0.18 # normalized distance (relative to head size) considered "near"
+
+# Alert settings
+beep_enabled: true
+beep_frequency: 880       # Hz
+beep_duration_ms: 350
+overlay_enabled: true
+save_events_csv: true
+events_csv_path: events_log.csv
