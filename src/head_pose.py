@@ -7,20 +7,20 @@ import cv2
 MODEL_POINTS = np.array([
     (0.0, 0.0, 0.0),             # Nose tip
     (0.0, -63.6, -12.5),         # Chin
-    (-43.3, 32.7, -26.0),        # Left eye left corner
-    (43.3, 32.7, -26.0),         # Right eye right corner
+    (-43.3, 32.7, -26.0),        # Left eye corner (외측 코너 기준)
+    (43.3, 32.7, -26.0),         # Right eye corner (외측 코너 기준)
     (-28.9, -28.9, -24.1),       # Left Mouth corner
     (28.9, -28.9, -24.1)         # Right mouth corner
 ], dtype=np.float64)
 
-# Corresponding FaceMesh landmark indices (approximate mapping)
+# Corresponding Dlib 68-landmark indices
 LANDMARKS_IDXS = {
-    "nose_tip": 1,      # nose tip approx
-    "chin": 152,
-    "left_eye_corner": 33,
-    "right_eye_corner": 263,
-    "left_mouth": 61,
-    "right_mouth": 291
+    "nose_tip": 30,      # Dlib Index 30
+    "chin": 8,           # Dlib Index 8
+    "left_eye_corner": 36, # Dlib Index 36 (외측)
+    "right_eye_corner": 45, # Dlib Index 45 (외측)
+    "left_mouth": 48,    # Dlib Index 48
+    "right_mouth": 54    # Dlib Index 54
 }
 
 def estimate_head_pose(landmarks2d, frame_shape):
@@ -43,11 +43,12 @@ def estimate_head_pose(landmarks2d, frame_shape):
     ], dtype=np.float64)
     dist_coeffs = np.zeros((4,1))
 
+    # solvePnP를 사용하여 회전 및 이동 벡터 계산
     success, rvec, tvec = cv2.solvePnP(MODEL_POINTS, image_points, camera_matrix, dist_coeffs, flags=cv2.SOLVEPNP_ITERATIVE)
     if not success:
         return None
 
-    # Convert rotation vector to Euler angles (degrees)
+    # 회전 벡터(rvec)를 오일러 각(Yaw, Pitch, Roll)로 변환 (기존 로직 유지)
     rmat, _ = cv2.Rodrigues(rvec)
     sy = np.sqrt(rmat[0,0]*rmat[0,0] + rmat[1,0]*rmat[1,0])
     singular = sy < 1e-6
