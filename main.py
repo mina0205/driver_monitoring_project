@@ -94,7 +94,7 @@ def main():
     config = yaml.safe_load(open("config.yaml", "r"))
     cam_idx = config.get("camera_index", 0)
 
-    # 🔥 macOS 안정화를 위해 AVFOUNDATION backend 사용
+    #  macOS 안정화를 위해 AVFOUNDATION backend 사용
     cap = cv2.VideoCapture(cam_idx, cv2.CAP_AVFOUNDATION)
 
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, config.get("frame_width", 1280))

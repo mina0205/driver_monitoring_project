@@ -1,8 +1,35 @@
-.venv/
-.venv311/
+# ─────────────────────────
+# Python cache & bytecode
+# ─────────────────────────
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-.DS_Store
+# ─────────────────────────
+# Virtual Environments
+# ─────────────────────────
+.venv/
+venv/
+env/
+dms_env/
+driver_env/
+
+# ─────────────────────────
+# Large / Auto-generated files
+# ─────────────────────────
+shape_predictor_68_face_landmarks.dat
+shape_predictor_68_face_landmarks.dat.bz2
+
+# 자동 생성되는 로그 파일
 events_log.csv
-.ipynb_checkpoints/
+
+# ─────────────────────────
+# macOS
+# ─────────────────────────
+.DS_Store
+
+# ─────────────────────────
+# VSCode workspace
+# ─────────────────────────
+.vscode/

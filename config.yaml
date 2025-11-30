@@ -4,7 +4,7 @@ frame_width: 1280         # 프레임 너비
 frame_height: 720         # 프레임 높이
 min_fps: 15               # 이 값보다 처리 속도가 느리면 경고
 ear_sleep_threshold: 0.18 # 눈 종횡비(EAR) 임계값 (값이 낮을수록 눈이 감겼을 가능성이 높음)
-ear_sleep_frames: 8     # 임계값 미만인 연속 프레임 수 -> 졸음 경고
+ear_sleep_frames: 16      # 임계값 미만인 연속 프레임 수 -> 졸음 경고 (지속시간)
 yawn_mouth_ratio_threshold: 0.6 # 선택 사항: 하품 감지를 위한 입 벌림 비율
 yawn_frames: 10           # 하품 경고가 발생하기 위해 입을 벌린 상태가 지속되어야 하는 프레임 수
 

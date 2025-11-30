@@ -3,6 +3,7 @@ import math
 from dataclasses import dataclass
 from typing import Tuple, List
 
+# FPS 평균값을 매끄럽게 계산 -> 부드러운 FPS 표시
 @dataclass
 class RunningStat:
     size: int
