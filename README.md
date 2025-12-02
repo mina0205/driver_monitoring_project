@@ -57,7 +57,7 @@ Yaw·Pitch가 기준값을 벗어나면 시선 이탈 감지.
 ### 1) 가상환경 활성화
 ```bash
 conda activate driver_env
-/opt/anaconda3/envs/driver_env/bin/python main.py
+python main.py
 
 
 
